@@ -71,7 +71,9 @@ curl http://localhost/health
 ```
 
 # Dừng toàn bộ
+```bash
 docker compose -f 02-docker/production/docker-compose.yml down
+```
 
 ### 4. Lấy API Key từ `.env` và Test Endpoint `/ask`
 Đọc tự động API key trong file `.env` của bạn để gửi request hỏi đáp về thời tiết và lựa chọn trang phục:

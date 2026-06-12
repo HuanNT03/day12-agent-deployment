@@ -483,6 +483,7 @@ def health():
         "environment": settings.environment,
         "uptime_seconds": round(time.time() - START_TIME, 1),
         "total_requests": _request_count,
+        "rate_limit": settings.rate_limit_per_minute,
         "checks": checks,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
