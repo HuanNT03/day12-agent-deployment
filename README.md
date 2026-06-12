@@ -115,7 +115,7 @@ railway domain
 
 1. Đẩy mã nguồn này lên một kho lưu trữ GitHub mới của bạn.
 2. Truy cập vào Dashboard của Render → chọn **New** → **Blueprint**.
-3. Kết nối với repo GitHub của bạn, Render sẽ tự động phát hiện và đọc cấu hình từ file [render.yaml](file:///home/huan/Develop/Github/Day12-Lab/Day12-agent-deployment/render.yaml).
+3. Kết nối với repo GitHub của bạn, Render sẽ tự động phát hiện và đọc cấu hình từ file [render.yaml](file:./Day12-agent-deployment/render.yaml).
 4. Thiết lập các biến môi trường tương ứng: `DASHSCOPE_API_KEY` và `AGENT_API_KEY`.
 5. Tiến hành Deploy. Khi quá trình build Docker hoàn tất, bạn sẽ nhận được một Public URL từ Render.
 
