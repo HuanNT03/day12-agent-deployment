@@ -7,7 +7,7 @@
 ---
 
 ## Public URL
-https://production-ai-agent-production.up.railway.app
+https://2a202600855-day12-agent-deployment-production.up.railway.app
 
 ## Platform
 Railway
@@ -18,7 +18,7 @@ Railway
 
 ### 1. Health Check (Liveness Probe)
 ```bash
-curl -i https://production-ai-agent-production.up.railway.app/health
+curl -i https://2a202600855-day12-agent-deployment-production.up.railway.app/health
 ```
 **Expected Response:**
 ```json
@@ -38,7 +38,7 @@ curl -i https://production-ai-agent-production.up.railway.app/health
 
 ### 2. Readiness Probe Check
 ```bash
-curl -i https://production-ai-agent-production.up.railway.app/ready
+curl -i https://2a202600855-day12-agent-deployment-production.up.railway.app/ready
 ```
 **Expected Response:**
 ```json
@@ -49,7 +49,7 @@ curl -i https://production-ai-agent-production.up.railway.app/ready
 
 ### 3. API Test (Missing API Key - Expected 401)
 ```bash
-curl -i -X POST https://production-ai-agent-production.up.railway.app/ask \
+curl -i -X POST https://2a202600855-day12-agent-deployment-production.up.railway.app/ask \
   -H "Content-Type: application/json" \
   -d '{"question": "Hello"}'
 ```
@@ -62,7 +62,7 @@ curl -i -X POST https://production-ai-agent-production.up.railway.app/ask \
 
 ### 4. API Test (With API Key - Expected 200)
 ```bash
-curl -i -X POST https://production-ai-agent-production.up.railway.app/ask \
+curl -i -X POST https://2a202600855-day12-agent-deployment-production.up.railway.app/ask \
   -H "X-API-Key: dev-key-change-me" \
   -H "Content-Type: application/json" \
   -d '{"question": "What is the capital of France?"}'
@@ -80,7 +80,7 @@ curl -i -X POST https://production-ai-agent-production.up.railway.app/ask \
 ### 5. Rate Limiting Test (Expected 429 after exceeding limit)
 ```bash
 for i in {1..10}; do
-  status_code=$(curl -s -o /dev/null -w "%{http_code}" -H "X-API-Key: dev-key-hello" -X POST -H "Content-Type: application/json" -d '{"question": "Test limit"}' http://localhost/ask)
+  status_code=$(curl -s -o /dev/null -w "%{http_code}" -H "X-API-Key: dev-key-change-me" -X POST -H "Content-Type: application/json" -d '{"question": "Test limit"}' http://2a202600855-day12-agent-deployment-production.up.railway.app/ask)
   echo "Lượt $i: HTTP $status_code"
 done
 ```

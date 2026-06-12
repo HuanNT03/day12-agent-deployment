@@ -87,8 +87,8 @@ Trong file `01-localhost-vs-production/develop/app.py`, các anti-pattern nguy h
 ## Part 3: Cloud Deployment
 
 ### Exercise 3.1: Railway deployment
-- **URL:** `https://production-ai-agent-production.up.railway.app` (URL mẫu để nộp bài)
-- **Screenshot:** [Link to screenshots in repo](screenshots/)
+- **URL:** `https://2a202600855-day12-agent-deployment-production.up.railway.app` (URL mẫu để nộp bài)
+- **Screenshot:** [dashboard.png](screenshots/dashboard.png)
 
 ### Câu hỏi thảo luận bổ sung:
 1. **Tại sao serverless (AWS Lambda, etc.) không phải lúc nào cũng tốt cho AI Agent?**
@@ -140,11 +140,11 @@ content-type: application/json
 
 #### 3. Bị chặn do vượt quá Rate Limit (Lỗi 429 Too Many Requests):
 ```bash
-$ for i in {1..25}; do curl -s -o /dev/null -w "%{http_code}\n" -H "X-API-Key: dev-key-change-me" -H "Content-Type: application/json" -d '{"question": "test"}' http://localhost:8000/ask; done
+$ for i in {1..10}; do curl -s -o /dev/null -w "%{http_code}\n" -H "X-API-Key: dev-key-change-me" -H "Content-Type: application/json" -d '{"question": "test"}' http://localhost:8000/ask; done
 
 200
 200
-... (18 lần 200)
+... (5 lần 200)
 200
 429
 429
@@ -153,7 +153,7 @@ $ for i in {1..25}; do curl -s -o /dev/null -w "%{http_code}\n" -H "X-API-Key: d
 *Chi tiết phản hồi lỗi 429:*
 ```json
 {
-  "detail": "Rate limit exceeded: 20 req/min"
+  "detail": "Rate limit exceeded: 5 req/min"
 }
 ```
 
