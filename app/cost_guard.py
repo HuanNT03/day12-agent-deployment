@@ -41,6 +41,8 @@ def check_and_record_cost(key: str, input_tokens: int, output_tokens: int):
             pipe.incrbyfloat(cost_key, cost)
             pipe.expire(cost_key, 24 * 3600 * 2) # lưu trong 2 ngày
             pipe.execute()
+        except HTTPException:
+            raise
         except Exception as e:
             # Fallback to memory if redis fails during check
             logger.warning(json.dumps({"event": "redis_check_failed_cost_guard", "msg": f"Redis cost check failed, falling back to memory: {str(e)}"}))

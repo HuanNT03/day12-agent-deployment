@@ -140,7 +140,7 @@ content-type: application/json
 
 #### 3. Bị chặn do vượt quá Rate Limit (Lỗi 429 Too Many Requests):
 ```bash
-$ for i in {1..10}; do curl -s -o /dev/null -w "%{http_code}\n" -H "X-API-Key: dev-key-change-me" -H "Content-Type: application/json" -d '{"question": "test"}' http://localhost:8000/ask; done
+$ for i in {1..10}; do curl -s -o /dev/null -w "%{http_code}\n" -H "X-API-Key: dev-key-change-me" -H "Content-Type: application/json" -d '{"question": "test"}' http://localhost/ask; done
 
 200
 200

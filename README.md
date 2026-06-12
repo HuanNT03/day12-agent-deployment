@@ -100,11 +100,13 @@ npm i -g @railway/cli
 railway login
 railway init
 
+# Tiến hành deploy
+railway up
+
 # Thiết lập các biến môi trường bí mật cần thiết
 railway variables set DASHSCOPE_API_KEY=your-api-key-here
 railway variables set BASE_URL=your-secret-url
-
-# Tiến hành deploy
+railway variables set AGENT_API_KEY=your-secret-agent-api-key
 railway up
 
 # Nhận tên miền công khai công bố dịch vụ!

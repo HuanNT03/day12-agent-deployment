@@ -44,6 +44,8 @@ def check_rate_limit(key: str):
                     detail=f"Rate limit exceeded: {limit} req/min",
                     headers={"Retry-After": "60"},
                 )
+        except HTTPException:
+            raise
         except Exception as e:
             # Fallback to memory if redis fails during check
             logger.warning(json.dumps({"event": "redis_check_failed_rate_limiter", "msg": f"Redis rate limit check failed, falling back to memory: {str(e)}"}))

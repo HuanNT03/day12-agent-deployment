@@ -72,7 +72,7 @@ curl -i -X POST https://2a202600855-day12-agent-deployment-production.up.railway
 ```json
 {
   "question": "What is the capital of France?",
-  "answer": "[Mock LLM Response] Answer to: What is the capital of France?",
+  "answer": "The capital of France is Paris.",
   "model": "qwen-turbo",
   "timestamp": "2026-06-12T13:30:10.123456Z"
 }
@@ -82,7 +82,7 @@ curl -i -X POST https://2a202600855-day12-agent-deployment-production.up.railway
 ```bash
 API_KEY=$(grep AGENT_API_KEY .env | cut -d= -f2)
 for i in {1..10}; do
-  status_code=$(curl -s -o /dev/null -w "%{http_code}" -H "X-API-Key: $API_KEY" -X POST -H "Content-Type: application/json" -d '{"question": "Test limit"}' http://2a202600855-day12-agent-deployment-production.up.railway.app/ask)
+  status_code=$(curl -s -o /dev/null -w "%{http_code}" -H "X-API-Key: $API_KEY" -X POST -H "Content-Type: application/json" -d '{"question": "Test limit"}' https://2a202600855-day12-agent-deployment-production.up.railway.app/ask)
   echo "Lượt $i: HTTP $status_code"
 done
 ```
