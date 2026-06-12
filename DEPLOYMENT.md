@@ -62,8 +62,9 @@ curl -i -X POST https://2a202600855-day12-agent-deployment-production.up.railway
 
 ### 4. API Test (With API Key - Expected 200)
 ```bash
+API_KEY=$(grep AGENT_API_KEY .env | cut -d= -f2)
 curl -i -X POST https://2a202600855-day12-agent-deployment-production.up.railway.app/ask \
-  -H "X-API-Key: dev-key-change-me" \
+  -H "X-API-Key: $API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"question": "What is the capital of France?"}'
 ```
@@ -79,8 +80,9 @@ curl -i -X POST https://2a202600855-day12-agent-deployment-production.up.railway
 
 ### 5. Rate Limiting Test (Expected 429 after exceeding limit)
 ```bash
+API_KEY=$(grep AGENT_API_KEY .env | cut -d= -f2)
 for i in {1..10}; do
-  status_code=$(curl -s -o /dev/null -w "%{http_code}" -H "X-API-Key: dev-key-change-me" -X POST -H "Content-Type: application/json" -d '{"question": "Test limit"}' http://2a202600855-day12-agent-deployment-production.up.railway.app/ask)
+  status_code=$(curl -s -o /dev/null -w "%{http_code}" -H "X-API-Key: $API_KEY" -X POST -H "Content-Type: application/json" -d '{"question": "Test limit"}' http://2a202600855-day12-agent-deployment-production.up.railway.app/ask)
   echo "Lượt $i: HTTP $status_code"
 done
 ```
