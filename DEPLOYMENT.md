@@ -79,10 +79,9 @@ curl -i -X POST https://production-ai-agent-production.up.railway.app/ask \
 
 ### 5. Rate Limiting Test (Expected 429 after exceeding limit)
 ```bash
-for i in {1..25}; do 
-  curl -s -H "X-API-Key: dev-key-change-me" -X POST -H "Content-Type: application/json" \
-    -d '{"question": "Test limit"}' https://production-ai-agent-production.up.railway.app/ask \
-    | grep -o "Rate limit exceeded" || echo "200 OK"; 
+for i in {1..10}; do
+  status_code=$(curl -s -o /dev/null -w "%{http_code}" -H "X-API-Key: dev-key-hello" -X POST -H "Content-Type: application/json" -d '{"question": "Test limit"}' http://localhost/ask)
+  echo "Lượt $i: HTTP $status_code"
 done
 ```
 
@@ -100,7 +99,7 @@ Các biến môi trường cấu hình trên Railway Dashboard để chạy ứn
 | `AGENT_API_KEY` | `dev-key-change-me` | API Key dùng để authenticate các request gửi lên `/ask`. |
 | `REDIS_URL` | `redis://default:password@your-redis-host:6379/0` | URL kết nối tới Redis instance (Stateful storage). |
 | `DAILY_BUDGET_USD` | `5.0` | Hạn mức chi tiêu tối đa hàng ngày cho LLM token. |
-| `RATE_LIMIT_PER_MINUTE` | `20` | Giới hạn số lượng request tối đa trong 1 phút (20 req/min). |
+| `RATE_LIMIT_PER_MINUTE` | `5` | Giới hạn số lượng request tối đa trong 1 phút (10 req/min). |
 
 ---
 

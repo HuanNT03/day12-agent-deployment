@@ -114,7 +114,7 @@ Dưới đây là mô phỏng quá trình kiểm tra bảo mật từ các API e
 
 #### 1. Yêu cầu API Key (Lỗi 401 Unauthorized khi thiếu key):
 ```bash
-$ curl -i http://localhost:8000/ask -X POST -H "Content-Type: application/json" -d '{"question": "Hello"}'
+$ curl -i http://localhost/ask -X POST -H "Content-Type: application/json" -d '{"question": "Hello"}'
 
 HTTP/1.1 401 Unauthorized
 date: Fri, 12 Jun 2026 13:28:00 GMT
